@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createApi } from "./api";
 import { Post, Tags } from "./components";
 import { PostData, TagsData } from "./types";
+import { Async } from "./components/async";
 
 const api = createApi();
 
@@ -22,7 +23,7 @@ function App() {
     );
   }, []);
 
-  if (state.status === "LOADING") return <div>LOADING</div>;
+  if (state.status === "LOADING") return <Async />;
 
   return (
     <>
