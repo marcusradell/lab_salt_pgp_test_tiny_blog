@@ -1,26 +1,35 @@
-import { data } from "./api";
+import { useEffect, useState } from "react";
+import { createApi } from "./api";
 import { Post, Tags } from "./components";
-import { TagsData } from "./types";
+import { PostData, TagsData } from "./types";
+
+const api = createApi();
+
+type LoadingState = { status: "LOADING" };
+
+type OkState = { status: "OK"; tags: TagsData; posts: PostData[] };
+
+type State = LoadingState | OkState;
 
 function App() {
-  const tags = data.posts
-    .flatMap(({ tags }) => tags)
-    .reduce((acc, val) => {
-      if (!acc[val]) {
-        acc[val] = 0;
+  const [state, setState] = useState<State>({ status: "LOADING" });
+
+  useEffect(() => {
+    Promise.all([api.posts.getAll(), api.tags.getAll()]).then(
+      ([posts, tags]) => {
+        setState({ status: "OK", tags, posts });
       }
+    );
+  }, []);
 
-      acc[val] += 1;
-
-      return acc;
-    }, {} as TagsData);
+  if (state.status === "LOADING") return <div>LOADING</div>;
 
   return (
     <>
       <Tags
-        tags={tags}
+        tags={state.tags}
         render={({ selectedTag }) => {
-          return data.posts
+          return state.posts
             .filter(
               (post) => selectedTag == null || post.tags.includes(selectedTag)
             )
