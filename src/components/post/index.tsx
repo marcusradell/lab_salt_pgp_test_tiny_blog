@@ -4,7 +4,7 @@ type Props = { post: PostData };
 
 export const Post = ({ post }: Props) => {
   return (
-    <div>
+    <div style={{ padding: "1rem" }}>
       <div>{post.title}</div>
       <div>{post.tags}</div>
       <div>{post.reactions}</div>
