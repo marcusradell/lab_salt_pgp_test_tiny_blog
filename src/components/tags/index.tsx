@@ -17,6 +17,8 @@ export const Tags = ({ tags, render }: Props) => {
           flexDirection: "row",
           justifyContent: "space-between",
           padding: "1rem",
+          overflow: "scroll",
+          maxWidth: "100vw",
         }}
       >
         {Object.entries(tags)
@@ -30,14 +32,16 @@ export const Tags = ({ tags, render }: Props) => {
                 key={name}
                 onClick={() => selectTag(name)}
                 style={{
+                  padding: "0.5rem",
                   cursor: "pointer",
                   borderBottom:
                     selectedTag === name ? `1px solid ${color}` : "0",
                   color,
                 }}
               >
-                <span>{name}</span>
-                <span> ({count})</span>
+                <span>
+                  {name}&nbsp;({count})
+                </span>
               </div>
             );
           })}
