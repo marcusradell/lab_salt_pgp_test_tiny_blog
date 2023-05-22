@@ -1,3 +1,5 @@
+export type PostData = (typeof data)["posts"][0];
+
 export const data = {
   posts: [
     {
