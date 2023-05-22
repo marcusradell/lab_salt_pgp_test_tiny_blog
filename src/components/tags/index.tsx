@@ -22,14 +22,17 @@ export const Tags = ({ tags, render }: Props) => {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .sort(([_, countA], [__, countB]) => countB - countA)
           .map(([name, count], index) => {
+            const color = index <= 5 ? "fuchsia" : "deeppink";
+
             return (
               <div
                 key={name}
                 onClick={() => selectTag(name)}
                 style={{
                   cursor: "pointer",
-                  background: selectedTag === name ? "pink" : "",
-                  color: index <= 5 ? "fuchsia" : "deeppink",
+                  borderBottom:
+                    selectedTag === name ? `1px solid ${color}` : "0",
+                  color,
                 }}
               >
                 <span>{name}</span>
