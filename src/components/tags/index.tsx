@@ -16,6 +16,7 @@ export const Tags = ({ tags, render }: Props) => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          padding: "1rem",
         }}
       >
         {Object.entries(tags)
@@ -36,7 +37,7 @@ export const Tags = ({ tags, render }: Props) => {
                 }}
               >
                 <span>{name}</span>
-                <span>{count}</span>
+                <span> ({count})</span>
               </div>
             );
           })}
