@@ -27,8 +27,9 @@ export const Tags = ({ tags, render }: Props) => {
                 key={name}
                 onClick={() => selectTag(name)}
                 style={{
+                  cursor: "pointer",
                   background: selectedTag === name ? "pink" : "",
-                  color: index <= 5 ? "black" : "grey",
+                  color: index <= 5 ? "fuchsia" : "deeppink",
                 }}
               >
                 <span>{name}</span>
