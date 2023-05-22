@@ -1,9 +1,9 @@
-import { FC, useState } from "react";
+import { ReactNode, useState } from "react";
 import { TagsData } from "../../data";
 
 type Props = {
   tags: TagsData;
-  render: (args: { selectedTag: string | null }) => any;
+  render: (args: { selectedTag: string | null }) => ReactNode;
 };
 
 export const Tags = ({ tags, render }: Props) => {
@@ -19,6 +19,7 @@ export const Tags = ({ tags, render }: Props) => {
         }}
       >
         {Object.entries(tags)
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           .sort(([_, countA], [__, countB]) => countB - countA)
           .map(([name, count], index) => {
             return (
