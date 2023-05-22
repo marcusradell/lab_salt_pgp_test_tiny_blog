@@ -11,19 +11,30 @@ export const Tags = ({ tags, render }: Props) => {
 
   return (
     <div>
-      <div>
-        {Object.entries(tags).map(([name, count]) => {
-          return (
-            <div
-              key={name}
-              onClick={() => selectTag(name)}
-              style={selectedTag === name ? { background: "pink" } : {}}
-            >
-              <div>{name}</div>
-              <div>{count}</div>
-            </div>
-          );
-        })}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        {Object.entries(tags)
+          .sort(([_, countA], [__, countB]) => countB - countA)
+          .map(([name, count], index) => {
+            return (
+              <div
+                key={name}
+                onClick={() => selectTag(name)}
+                style={{
+                  background: selectedTag === name ? "pink" : "",
+                  color: index <= 5 ? "black" : "grey",
+                }}
+              >
+                <span>{name}</span>
+                <span>{count}</span>
+              </div>
+            );
+          })}
       </div>
       {render({ selectedTag })}
     </div>
