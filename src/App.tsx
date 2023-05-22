@@ -26,8 +26,6 @@ function App() {
             .map((post) => <Post key={post.id} post={post} />);
         }}
       />
-
-      <pre>{JSON.stringify(data, null, 2)}</pre>
     </>
   );
 }
