@@ -16,10 +16,17 @@ function App() {
 
   return (
     <>
-      <Tags tags={tags} />
-      {data.posts.map((post) => (
-        <Post key={post.id} post={post} />
-      ))}
+      <Tags
+        tags={tags}
+        render={({ selectedTag }) => {
+          return data.posts
+            .filter(
+              (post) => selectedTag == null || post.tags.includes(selectedTag)
+            )
+            .map((post) => <Post key={post.id} post={post} />);
+        }}
+      />
+
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </>
   );
