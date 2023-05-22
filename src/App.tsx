@@ -1,5 +1,6 @@
-import { data, TagsData } from "./data";
+import { data } from "./api";
 import { Post, Tags } from "./components";
+import { TagsData } from "./types";
 
 function App() {
   const tags = data.posts

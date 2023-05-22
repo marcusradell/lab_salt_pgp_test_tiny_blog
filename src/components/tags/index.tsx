@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { TagsData } from "../../data";
+import { TagsData } from "../../types";
 
 type Props = {
   tags: TagsData;

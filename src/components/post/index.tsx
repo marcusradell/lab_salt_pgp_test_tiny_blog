@@ -1,4 +1,4 @@
-import { PostData } from "../../data";
+import { PostData } from "../../types";
 
 type Props = { post: PostData };
 

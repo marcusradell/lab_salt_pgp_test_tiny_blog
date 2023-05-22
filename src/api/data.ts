@@ -1,7 +1,3 @@
-export type PostData = (typeof data)["posts"][0];
-
-export type TagsData = { [name: string]: number };
-
 export const data = {
   posts: [
     {
